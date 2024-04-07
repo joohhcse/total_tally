@@ -9,5 +9,23 @@ class Product {
     required this.price,
   });
 
+  Product copyWith({
+    int? id,
+    String? name,
+    double? price,
+  }) {
+    return Product(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      price: price ?? this.price,
+    );
+  }
 
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'price' : price,
+    };
+  }
 }
