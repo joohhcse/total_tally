@@ -63,7 +63,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Screen 1'),
+        title: Text('Total Tally'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -82,8 +82,9 @@ class _MainScreenState extends State<MainScreen> {
                   return Text('Error: ${snapshot.error}');
                 } else {
                   double totalPrice = snapshot.data ?? 0.0; // 데이터 로딩 완료 후 totalPrice 갱신
+                  String formattedPrice = totalPrice.toStringAsFixed(2);
                   return Text(
-                    '$totalPrice',
+                    formattedPrice,
                     style: TextStyle(fontSize: 26),
                   );
                 }
@@ -103,8 +104,9 @@ class _MainScreenState extends State<MainScreen> {
                       itemCount: products.length,
                       itemBuilder: (BuildContext context, int index) {
                         double amount = products[index].price * products[index].quantity;
+                        String formattedAmount = amount.toStringAsFixed(2);
                         return ListTile(
-                          title: Text('${products[index].price} × ${products[index].quantity} = $amount'),
+                          title: Text('${products[index].price} × ${products[index].quantity} = $formattedAmount'),
                           subtitle: Text(products[index].name),
                           trailing: GestureDetector(
                             onTap: () async {
@@ -135,7 +137,7 @@ class _MainScreenState extends State<MainScreen> {
                 Expanded(
                   child: TextField(
                     controller: itemNameController,
-                    decoration: InputDecoration(labelText: 'Item Name'),
+                    decoration: InputDecoration(labelText: 'Name'),
                   ),
                 ),
                 SizedBox(width: 10), // 각 TextField 사이에 간격을 줍니다.

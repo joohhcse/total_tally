@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:total_tally/screen/main_screen.dart';
-import 'package:total_tally/screen/sub_screen.dart';
+import 'package:total_tally/screen/setting_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,8 +17,37 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _children = [
     MainScreen(),
-    SubScreen(),
+    SettingScreen(),
   ];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _loadThemeMode();
+  }
+
+  late SharedPreferences _prefs;
+
+  Future<void> _loadThemeMode() async {
+    _prefs = await SharedPreferences.getInstance();
+    final String? savedThemeMode = _prefs.getString('themeMode');
+
+    if(savedThemeMode == null) {
+      HomeScreen.themeNotifier.value = ThemeMode.light;
+    } else if(savedThemeMode == "ThemeMode.light") {
+      HomeScreen.themeNotifier.value = ThemeMode.light;
+    } else if(savedThemeMode == "ThemeMode.dark") {
+      HomeScreen.themeNotifier.value = ThemeMode.dark;
+    }
+  }
+
+  Future<void> _saveThemeMode(ThemeMode themeMode) async {
+    _prefs = await SharedPreferences.getInstance();
+
+    _prefs.setString('themeMode', themeMode.toString());
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +66,12 @@ class _HomeScreenState extends State<HomeScreen> {
               onTap: onTabTapped,
               items: [
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.mark_chat_unread_outlined),
-                  label: 'Screen1',
+                  icon: Icon(Icons.calculate_outlined),
+                  label: 'Total Tally',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.list),
-                  label: 'Screen2',
+                  icon: Icon(Icons.settings),
+                  label: 'Setting',
                 ),
               ],
             ),
@@ -62,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // 앱이 종료될 때 SharedPreferences에 테마 모드를 저장
   @override
   void dispose() {
-    // _saveThemeMode(HomeScreen.themeNotifier.value);
+    _saveThemeMode(HomeScreen.themeNotifier.value);
     super.dispose();
   }
 
