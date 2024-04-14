@@ -5,7 +5,8 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(
-    // const MyApp()
+    //20240414 add global lang version
+    
     MaterialApp(
       home: HomeScreen(),
     ),
