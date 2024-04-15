@@ -31,6 +31,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations: # 다국어 패키지
+    sdk: flutter
+  intl: ^0.18.1 # 포멧등 패키지
 
   shared_preferences: ^2.0.13 # shared_preferences
   sqflite: ^2.0.0+3
