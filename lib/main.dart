@@ -8,7 +8,7 @@ void main() {
 
   runApp(
     //20240414 add global lang version
-    
+
     MaterialApp(
       home: HomeScreen(),
       localizationsDelegates: const [
