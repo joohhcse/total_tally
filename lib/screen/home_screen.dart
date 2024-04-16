@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:total_tally/screen/main_screen.dart';
 import 'package:total_tally/screen/setting_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -59,6 +61,17 @@ class _HomeScreenState extends State<HomeScreen> {
           themeMode: themeMode, // MaterialApp의 테마 모드를 themeNotifier의 값으로 설정합니다.
           theme: ThemeData.light(),
           darkTheme: ThemeData.dark(),
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('ko', ''),
+            Locale('en', ''),
+            Locale('ja', ''),
+          ],
           home: Scaffold(
             body: _children[_currentIndex],
             bottomNavigationBar: BottomNavigationBar(
@@ -67,11 +80,11 @@ class _HomeScreenState extends State<HomeScreen> {
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.calculate_outlined),
-                  label: 'Total Tally',
+                  label: AppLocalizations.of(context)!.title, //'Total Tally',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.settings),
-                  label: 'Setting',
+                  label: AppLocalizations.of(context)!.setting, //'Setting',
                 ),
               ],
             ),

@@ -1,0 +1,9 @@
+{
+    "hello": "こんにちは",
+    "title": "合計 計算機",
+    "setting": "設定",
+    "total": "- 合計 -",
+    "name": "品名",
+    "price": "値段",
+    "quantity": "数量"
+}

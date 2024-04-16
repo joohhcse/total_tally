@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:total_tally/screen/home_screen.dart';
 
 void main() {
@@ -10,9 +11,8 @@ void main() {
     
     MaterialApp(
       home: HomeScreen(),
-      routes: {'/localization': (context) => Container()},
-      initialRoute: '/localization',
       localizationsDelegates: const [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,

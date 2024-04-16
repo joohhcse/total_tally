@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:total_tally/model/Product.dart';
 import 'package:total_tally/database/database_service.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -15,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
   TextEditingController itemNameController = TextEditingController();
   TextEditingController itemPriceController = TextEditingController();
   TextEditingController itemQuantityController = TextEditingController();
-  List<Map<String, dynamic>> itemsList = [];  //don't use
+  // List<Map<String, dynamic>> itemsList = [];  //don't use
   List<Product> _product = [];
   double totalPrice = 0.0;
 
@@ -63,14 +65,15 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Total Tally'),
+        title: Text(AppLocalizations.of(context)!.title), //Text('Total Tally'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
             Text(
-              '- TOTAL PRICE -',
+              // 'total price', //AppLocalizations.of(context)!.total,
+              AppLocalizations.of(context)!.total,
               style: TextStyle(fontSize: 18),
             ),
             FutureBuilder<double>(
@@ -137,14 +140,14 @@ class _MainScreenState extends State<MainScreen> {
                 Expanded(
                   child: TextField(
                     controller: itemNameController,
-                    decoration: InputDecoration(labelText: 'Name'),
+                    decoration: InputDecoration(labelText: AppLocalizations.of(context)!.name), //AppLocalizations.of(context)!.name,
                   ),
                 ),
                 SizedBox(width: 10), // 각 TextField 사이에 간격을 줍니다.
                 Expanded(
                   child: TextField(
                     controller: itemPriceController,
-                    decoration: InputDecoration(labelText: 'Price'),
+                    decoration: InputDecoration(labelText: AppLocalizations.of(context)!.price),  //AppLocalizations.of(context)!.price,
                     keyboardType: TextInputType.numberWithOptions(decimal: true),
                   ),
                 ),
@@ -152,7 +155,7 @@ class _MainScreenState extends State<MainScreen> {
                 Expanded(
                   child: TextField(
                     controller: itemQuantityController,
-                    decoration: InputDecoration(labelText: 'Quantity'),
+                    decoration: InputDecoration(labelText: AppLocalizations.of(context)!.quantity), //AppLocalizations.of(context)!.quantity,
                     keyboardType: TextInputType.number,
                   ),
                 ),

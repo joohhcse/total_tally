@@ -1,0 +1,9 @@
+{
+    "hello": "안녕하세요",
+    "title": "쇼핑 계산기",
+    "setting": "설정",
+    "total": "- 총 합계 -",
+    "name": "이름",
+    "price": "가격",
+    "quantity": "수량"
+}
