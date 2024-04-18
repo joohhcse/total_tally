@@ -23,6 +23,13 @@ dependencies:
   firebase_core: ^2.17.0
   cloud_firestore: 4.0.5
 
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
+
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
