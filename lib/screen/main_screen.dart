@@ -4,6 +4,7 @@ import 'package:total_tally/model/Product.dart';
 import 'package:total_tally/database/database_service.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:total_tally/banner_ad_widget.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -93,6 +94,7 @@ class _MainScreenState extends State<MainScreen> {
                 }
               },
             ),
+            BannerAdWidget(), //admop
             Expanded(
               child: FutureBuilder<List<Product>>(
                 future: DatabaseService.instance.getAllProduct(),

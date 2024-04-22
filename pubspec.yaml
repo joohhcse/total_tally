@@ -2,7 +2,7 @@ name: total_tally
 description: "for shopping price sum"
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+3
+version: 1.0.0+4
 
 environment:
 #  sdk: '>=3.2.3 <4.0.0'
@@ -15,6 +15,7 @@ dependencies:
     sdk: flutter
   intl: any # 포멧등 패키지
 
+  google_mobile_ads: ^2.3.0
   shared_preferences: ^2.0.13 # shared_preferences
   sqflite: ^2.0.0+3
   path: ^1.8.1
@@ -23,7 +24,7 @@ dependencies:
   firebase_core: ^2.17.0
   cloud_firestore: 4.0.5
 
-  flutter_launcher_icons: "^0.7.2"
+  flutter_launcher_icons: "^0.13.1"
 
 flutter_icons:
   android: true

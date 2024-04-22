@@ -10,6 +10,7 @@
 .svn/
 migrate_working_dir/
 google-services.json
+AndroidManifest.xml
 
 key.properties
 **/*.keystore
